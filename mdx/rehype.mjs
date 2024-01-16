@@ -51,7 +51,7 @@ export const rehypePlugins = [
       start: 'element[tagName=hr]',
       transform: (article) => {
         article.children.splice(0, 1)
-        let heading = article.children.find((n) => n.tagName === 'h2')
+        let heading = (article.children.find((n) => n.tagName === 'h2') ?? '')
         article.properties = { ...heading.properties, title: toString(heading) }
         heading.properties = {}
         return article
